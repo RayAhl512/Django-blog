@@ -3,12 +3,15 @@ from .models import BlogPost, Comment
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 def post_list(request):
     posts = BlogPost.objects.all()
-    return render(request, 'blog_posts_templates/post_list.html', {'posts': posts})
+    return render(request, 'post_list.html', {'posts': posts})
+
 
 def post_detail(request, pk):
-    post = get_object_or_404(BlogPost, pk=pk)  # Using get_object_or_404 for safety
+    # Using get_object_or_404 for safety
+    post = get_object_or_404(BlogPost, pk=pk)
 
     # Check if the request is a POST (i.e., a form submission)
     if request.method == "POST":
@@ -26,9 +29,4 @@ def post_detail(request, pk):
     comments = post.comments.all()
 
     # If the request is a GET, display the post details and comments
-    return render(request, 'blog_posts_templates/post_detail.html', {'post': post, 'comments': comments})
-
-
-
-
-
+    return render(request, 'post_detail.html', {'post': post, 'comments': comments})
