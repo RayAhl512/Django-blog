@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic setup for responsiveness and character set -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post Details</title>
+    <!-- Title of the page will be the title of the blog post -->
+    <title>{{ post.post_title }}</title>
 </head>
 <body>
-    <h1>Post Details</h1>
-    <!-- Later, we'll display the details of a specific blog post here -->
+    <!-- Display the title of the blog post -->
+    <h1>{{ post.post_title }}</h1>
+
+    <!-- Display the author and creation date of the blog post -->
+    <p>By {{ post.post_author }} on {{ post.post_created_date }}</p>
+
+    <!-- Display the content of the blog post -->
+    <p>{{ post.post_content }}</p>
+
+    <!-- Section to display comments for the blog post -->
+    <h3>Comments:</h3>
+
+    <!-- Loop through each comment associated with this blog post -->
+    {% for comment in post.comments.all %}
+        <div class="comment">
+            <!-- Display the author and creation date for each comment -->
+            <p>By {{ comment.author }} on {{ comment.created_date }}</p>
+
+            <!-- Display the content of the comment -->
+            <p>{{ comment.content }}</p>
+        </div>
+    {% endfor %}
+
+    <!-- Section for users to add a new comment -->
+    <h4>Add a Comment:</h4>
+
+    <!-- Form to submit a new comment. The method "post" means data will be sent to the server. -->
+    <form method="post">
+        <!-- Token for security purposes when submitting form data in Django -->
+        {% csrf_token %}
+
+        <!-- Textarea for user to write their comment -->
+        <div>
+            <label for="content">Your Comment:</label>
+            <textarea name="content" required></textarea>
+        </div>
+
+        <!-- Button to submit the form -->
+        <button type="submit">Submit Comment</button>
+    </form>
+
 </body>
 </html>
