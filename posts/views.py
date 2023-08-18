@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
-from .models import BlogPost, Comment
+from django.contrib.auth import login
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from .models import BlogPost, Comment
+from django.contrib.auth.forms import UserCreationForm
 
 
 def post_list(request):
@@ -30,3 +32,15 @@ def post_detail(request, pk):
 
     # If the request is a GET, display the post details and comments
     return render(request, 'post_detail.html', {'post': post, 'comments': comments})
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('post_list')  # Redirect to your desired page
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/register.html', {'form': form})
