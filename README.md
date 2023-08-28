@@ -1,2 +1,2 @@
 # Django-blog
-Exploring Django through a dynamic blog. User authentication, post creation, and comments. A journey in web development. Work in progress.
+Welcome to my Django Blog Learning Project! This repository showcases my journey into the world of Django, a powerful web framework. As I learn the ins and outs of Django, I'm building a functional blog where users can create accounts, write posts, and interact through comments. This project is ongoing, so you'll get to see the evolution of my skills as I work on refining and enhancing different aspects of the blog. Join me in this exploration of Django and web development!
