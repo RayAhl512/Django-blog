@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 def post_list(request):
+   # Fetch all blog posts from the database
     posts = BlogPost.objects.all()
     return render(request, 'post_list.html', {'posts': posts})
 

@@ -31,15 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'posts.apps.PostsConfig',
-    'allauth',
-    'allauth.account',
+    'django.contrib.admin', # Django Admin for managing the site
+    'django.contrib.auth', # Default authentication system
+    'django.contrib.contenttypes',  # Content type framework
+    'django.contrib.sessions', # Session management
+    'django.contrib.messages', # Message framework
+    'django.contrib.staticfiles', # Handling static files
+    'posts.apps.PostsConfig', # Custom app for managing blog posts
+    'allauth',  # Allauth package for advanced authentication
+    'allauth.account', # Submodule of Allauth for user accounts
 ]
 
 MIDDLEWARE = [
